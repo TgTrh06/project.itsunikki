@@ -59,8 +59,8 @@ Record security-relevant reads, writes, permission changes, exports, login/secur
 
 ## 5. Delivery and quality
 
-- Pull requests run formatting, type checks, unit tests, integration/API tests, dependency/security checks, and build validation. Preview deployments do not access production secrets or production data.
-- Promote approved builds through staging to production using Vercel-managed deployments. Production deployments require a verified health check and a documented rollback path.
+- Before release, manually run and record applicable formatting, type checks, unit tests, integration/API tests, dependency/security checks, and build validation. Preview deployments do not access production secrets or production data.
+- Promote approved builds through staging to production using Vercel-managed deployments. Production deployments require manually verified health checks and a documented rollback path.
 - Roll back application code through the prior healthy deployment. Handle schema changes with expand/migrate/contract or a tested compensating migration; never rely on an unsafe destructive rollback.
 - Follow the testing pyramid: many unit tests for domain logic, focused integration tests for data/providers, API contract tests for routes, and a small set of end-to-end tests for critical journeys.
 

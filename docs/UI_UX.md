@@ -5,7 +5,7 @@
 
 ## 1. Required outcomes
 
-Every supported user flow must be understandable, keyboard-operable, responsive, and usable with assistive technology. The acceptance target is WCAG 2.2 AA unless an approved, time-bound exception is recorded in the pull request.
+Every supported user flow must be understandable, keyboard-operable, responsive, and usable with assistive technology. The acceptance target is WCAG 2.2 AA unless an approved, time-bound exception is recorded in the change record.
 
 ## 2. Design and interaction rules
 
@@ -39,7 +39,7 @@ For each asynchronous or data-dependent screen, implement and review:
 
 ## 5. Review evidence
 
-Pull requests changing UI must include before/after screenshots or a concise recording for affected states, viewport coverage, keyboard/accessibility test evidence, and the relevant acceptance criteria from [PRD.md](PRD.md). A material design-system change requires an ADR under `adr/`.
+The change record for UI work must include before/after screenshots or a concise recording for affected states, viewport coverage, keyboard/accessibility test evidence, and the relevant acceptance criteria from [PRD.md](PRD.md). A material design-system change requires an ADR under `adr/`.
 
 ## 6. Exceptions
 

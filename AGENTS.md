@@ -13,16 +13,16 @@ These rules apply to humans and AI agents working in this repository.
 
 ## Working rules
 
-- Keep each change focused on the requested outcome. State assumptions, unresolved questions, and user-visible tradeoffs in the pull request.
+- Keep each change focused on the requested outcome. Record assumptions, unresolved questions, and user-visible tradeoffs in the change record; a pull request may be used but is not required.
 - Follow existing repository conventions. If none exist, use explicit types, small composable modules, secure defaults, and clear tests rather than introducing broad frameworks.
 - Keep UI, route/API, domain service, data-access, and provider adapter responsibilities separate.
 - For user-facing changes, meet the UI/UX acceptance rules, state coverage, and review evidence in `docs/UI_UX.md`.
 - Never commit secrets, tokens, private keys, production data, or sensitive request/response payloads. Use placeholders in examples and fixtures.
 - Do not change generated files, lockfiles, dependencies, schemas, public contracts, or deployment settings without understanding their impact and including the required review notes.
 
-## Pull request requirements
+## Manual change evidence
 
-Every change is made through a reviewed pull request. A PR must include:
+Before a material, sensitive, release, or production-impacting change, record:
 
 - The problem, solution, scope, and assumptions.
 - Appropriate tests: unit tests for behavior; integration, API contract, and end-to-end coverage where the boundary changed.
@@ -39,7 +39,7 @@ Create and obtain approval for an ADR before implementing a material change to a
 
 ## Explicit prohibitions
 
-- No direct production changes or bypassing CI/CD and review controls.
+- No direct production changes or bypassing approved deployment and review controls.
 - No committed secrets, sensitive telemetry, or use of production data in non-production environments without approved handling.
 - No unreviewed destructive or unauthorized schema changes.
 - No silent breaking API changes or unreviewed dependency upgrades.
