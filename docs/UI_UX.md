@@ -1,6 +1,6 @@
 # UI/UX Standard
 
-**Status:** Mandatory baseline for every user-facing change.  
+**Status:** Mandatory baseline for every user-facing change.
 **Authority:** Read this document before creating or changing screens, flows, components, content, or user-visible API errors. [ARCHITECTURE.md](ARCHITECTURE.md) remains authoritative for security and system boundaries.
 
 ## 1. Required outcomes

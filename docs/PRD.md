@@ -1,7 +1,7 @@
 # Product Requirements Document
 
-**Status:** Template — product-specific fields are intentionally marked **TBD**.  
-**Owner:** TBD  
+**Status:** Template — product-specific fields are intentionally marked **TBD**.
+**Owner:** TBD
 **Last reviewed:** TBD
 
 ## 1. Product summary

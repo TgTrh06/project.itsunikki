@@ -1,6 +1,6 @@
 # Delivery Governance
 
-**Status:** Mandatory control baseline.  
+**Status:** Mandatory control baseline.
 **Applies to:** All human and AI contributors, source changes, documentation changes, deployment changes, and production operations.
 
 ## 1. Authority and read order

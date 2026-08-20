@@ -1,6 +1,6 @@
 # Architecture
 
-**Status:** Baseline architecture for a sensitive-data Node.js web application. Product-specific choices are **TBD** until approved through an ADR.  
+**Status:** Baseline architecture for a sensitive-data Node.js web application. Product-specific choices are **TBD** until approved through an ADR.
 **Authority:** This is the detailed architecture source of truth. For day-to-day rules, start with [ARCHITECTURE_ESSENTIALS.md](ARCHITECTURE_ESSENTIALS.md).
 
 ## 1. System model
