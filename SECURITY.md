@@ -20,4 +20,4 @@ Keep reports private until remediation is available and affected users have had 
 
 ## Supported scope
 
-The project is in initial development. Security issues in repository code, CI/CD configuration, dependencies, deployment configuration, and documented security controls are in scope. Product-specific support windows and service-level commitments are **TBD**.
+The project is in initial development. Security issues in repository code, dependencies, deployment configuration, and documented security controls are in scope. Product-specific support windows and service-level commitments are **TBD**.
