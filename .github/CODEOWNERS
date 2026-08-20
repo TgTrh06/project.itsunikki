@@ -1,0 +1,7 @@
+# Default owner. Add additional GitHub teams/users before requiring independent review.
+* @TgTrh06
+
+# Controlled paths
+/docs/ @TgTrh06
+/.github/ @TgTrh06
+/SECURITY.md @TgTrh06
