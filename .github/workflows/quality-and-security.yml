@@ -1,0 +1,95 @@
+name: Quality and Security
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  detect-node-project:
+    runs-on: ubuntu-latest
+    outputs:
+      has_node_project: ${{ steps.detect.outputs.has_node_project }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: detect
+        shell: bash
+        run: |
+          if [[ -f package.json && -f pnpm-lock.yaml ]]; then
+            echo "has_node_project=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_node_project=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dependency-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: never
+
+  quality:
+    needs: detect-node-project
+    if: needs.detect-node-project.outputs.has_node_project == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm run lint
+      - name: Typecheck
+        run: pnpm run typecheck
+      - name: Test
+        run: pnpm test
+      - name: Build
+        run: pnpm run build
+      - name: Audit dependencies
+        run: pnpm audit --audit-level=high
+
+  required:
+    if: always()
+    needs: [secret-scan, dependency-review, quality]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce required checks
+        shell: bash
+        run: |
+          if [[ "${{ needs.secret-scan.result }}" != "success" ]]; then
+            echo "Secret scan did not succeed."
+            exit 1
+          fi
+          if [[ "${{ needs.dependency-review.result }}" != "success" && "${{ needs.dependency-review.result }}" != "skipped" ]]; then
+            echo "Dependency review did not succeed."
+            exit 1
+          fi
+          if [[ "${{ needs.quality.result }}" != "success" && "${{ needs.quality.result }}" != "skipped" ]]; then
+            echo "Node.js quality checks did not succeed."
+            exit 1
+          fi
