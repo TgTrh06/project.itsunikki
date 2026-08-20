@@ -21,7 +21,7 @@ This is the operational guide for contributors and agents. [ARCHITECTURE.md](ARC
 
 - Keep development, preview, staging, and production credentials and data isolated. Preview deployments must not receive production secrets.
 - Document each environment variable's purpose, owner, environments, rotation procedure, and whether it is public. Do not record its value.
-- Deploy through reviewed CI/Vercel flows only. Verify health checks after promotion and retain a practical code and migration rollback plan.
+- Deploy through reviewed Vercel flows only. Manually verify health checks after promotion and retain a practical code and migration rollback plan.
 
 ## Change checklists
 

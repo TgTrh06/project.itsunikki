@@ -4,7 +4,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 
 ## How to use this file
 
-- Work on one numbered task per session or pull request.
+- Work on one numbered task per session or recorded change.
 - Mark a task **in progress** before editing and **done** only after its acceptance criteria are verified.
 - If a task cannot be described in one line, split it into smaller tasks.
 - Add newly discovered work beneath the most relevant section; preserve completed task history.
@@ -17,10 +17,9 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 ## 0. Governance and delivery controls
 
 - [x] 0.1 Establish the governance, UI/UX, security, incident, and release/rollback documentation baseline.
-- [x] 0.2 Add repository-owned PR template, CODEOWNERS, Dependabot, and CI/security workflow configuration.
-- [ ] 0.3 Enable GitHub private vulnerability reporting and configure the `develop` and `main` branch rules in [GOVERNANCE.md](GOVERNANCE.md).
-- [ ] 0.4 After application scaffolding, confirm `quality-and-security / required` blocks a failing lint, typecheck, test, build, audit, and secret scan.
-- [ ] 0.5 Run an incident and rollback tabletop exercise; record follow-up tasks and owners.
+- [x] 0.2 Remove repository-managed GitHub enforcement; retain documentation-led manual controls.
+- [ ] 0.3 Define the manual pre-release checklist after application scaffolding, including lint, typecheck, tests, build, dependency review, and secret review.
+- [ ] 0.4 Run an incident and rollback tabletop exercise; record follow-up tasks and owners.
 
 ## 1. Discovery and product definition
 
@@ -32,7 +31,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 ## 2. Application foundation
 
 - [ ] 2.1 Scaffold the Node.js web application and its folder structure.
-- [ ] 2.2 Configure TypeScript, formatting, linting, tests, and CI validation.
+- [ ] 2.2 Configure TypeScript, formatting, linting, tests, and documented manual validation commands.
 - [ ] 2.3 Establish accessible theme tokens, typography, layout primitives, and responsive breakpoints.
 - [ ] 2.4 Configure separate development, preview, staging, and production environments without exposing secrets.
 

@@ -2,15 +2,15 @@
 
 ## Before production promotion
 
-- Confirm the change entered `develop` through a reviewed pull request and all required checks passed.
+- Confirm the change has a documented scope, manual review, and recorded relevant test evidence.
 - Confirm release scope, acceptance criteria, migration state, UI/UX review where applicable, security/privacy impact, dashboards/alerts, support notes, and rollback plan.
 - Ensure staging uses isolated credentials and synthetic/anonymized data; never validate with unapproved production data.
 
 ## Promote
 
-1. Open a `develop` → `main` pull request with release notes and links to material ADRs.
-2. Reconfirm the required `quality-and-security / required` check and resolved review conversations.
-3. Deploy through the approved Vercel/GitHub release flow; do not mutate production directly.
+1. Record release notes and links to material ADRs; a `develop` → `main` pull request may be used but is not required.
+2. Manually reconfirm test evidence, security/privacy impact, UI/UX review where applicable, and rollback readiness.
+3. Deploy through the approved Vercel release flow; do not mutate production directly.
 4. Verify health checks, critical user journeys, error/latency telemetry, audit events, and integration behavior.
 
 ## Roll back
