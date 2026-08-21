@@ -24,13 +24,19 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 - [ ] 0.4 Run an incident and rollback tabletop exercise; record follow-up tasks and owners.
 - [x] 0.5 Configure the global Codex profile for GPT-5.6 Terra at medium reasoning effort with multi-agent disabled.
 - [x] 0.6 Add and validate the lean `itsunikki-coding` skill and proportional-evidence coding guidance.
+- [x] 0.7 Remove the redundant global `itsunikki-coding` skill after installing the Komorebi plugin; retain repository-specific rules in `AGENTS.md`.
 
 ## 1. Discovery and product definition
 
 - [x] 1.1 Confirm the personal-tracker vision, personal-account user, primary problem, and release-one journeys in [PRD.md](PRD.md).
 - [x] 1.2 Define first-release scope, exclusions, functional requirements, and flow catalog in [FLOWS.md](FLOWS.md).
 - [ ] 1.3 Approve data classifications, retention requirements, export/deletion execution, and account policy through ADRs.
-- [ ] 1.4 Record unresolved product and compliance decisions with an owner and due date.
+- [ ] 1.4 Resolve release-relevant open decisions with the owner and dependency deadline below.
+- [ ] 1.4a Owner: TgTrh06 · Due before 3.1 — approve identity provider, session duration, password recovery, account verification, and RBAC policy through an ADR.
+- [ ] 1.4b Owner: TgTrh06 · Due before 3.2 — approve database, migration tooling, tenancy model, backup/recovery objectives, and data residency through an ADR.
+- [ ] 1.4c Owner: TgTrh06 · Due before 4.8 — approve retention, export/deletion execution, and applicable compliance obligations through an ADR.
+- [ ] 1.4d Owner: TgTrh06 · Due before 6.1 — define dashboard/history performance budgets, SLOs, supported regions, and degradation behavior.
+- [ ] 1.4e Owner: TgTrh06 · Due before 6.4 — set the daily-tracking completion target and approve task recurrence, habit frequency, metric units, nutrition validation ranges, and dashboard indicators.
 
 ## 2. Application foundation
 
