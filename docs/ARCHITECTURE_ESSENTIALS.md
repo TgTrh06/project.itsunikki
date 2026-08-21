@@ -14,7 +14,7 @@ This is the operational guide for contributors and agents. [ARCHITECTURE.md](ARC
 - Use least-privilege RBAC and enforce tenant/resource ownership on every protected operation.
 - Never put secrets, access tokens, production data, or sensitive payloads in source, test snapshots, logs, errors, analytics, or client-side environment variables.
 - Use only server-side environment variables for credentials. Any `NEXT_PUBLIC_`-style variable is public by design.
-- Redact telemetry, return stable safe errors, and add audit events for protected reads, writes, exports, role changes, and administrator actions.
+- Redact telemetry, return stable safe errors, and add audit events for authentication outcomes, authorization denials, accepted creates/updates/deletes, export/deletion requests, role changes, and administrator actions; do not audit routine dashboard or history reads.
 - Never copy production data to preview, development, or staging without an approved exception.
 
 ## Environment and deployment
