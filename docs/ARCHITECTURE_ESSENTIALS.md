@@ -23,12 +23,19 @@ This is the operational guide for contributors and agents. [ARCHITECTURE.md](ARC
 - Document each environment variable's purpose, owner, environments, rotation procedure, and whether it is public. Do not record its value.
 - Deploy through reviewed Vercel flows only. Manually verify health checks after promotion and retain a practical code and migration rollback plan.
 
+## Incremental delivery
+
+- Build the smallest working slice of an approved flow before introducing reusable infrastructure.
+- Do not add a framework, provider, cache, queue, abstraction, or empty layer for a future possibility. Add one only when the current requirement needs it and document a material decision with an ADR.
+- Use one primary agent for this project. Do not delegate or spawn subagents.
+- Match validation to the changed boundary: a routine local change needs its relevant check; a feature needs behavior coverage; sensitive or irreversible work needs focused security and rollback evidence.
+
 ## Change checklists
 
 ### Feature or API
 
-- Define the permitted roles, tenant/resource authorization rule, input/output contract, validation, safe errors, and audit event.
-- Add unit tests for domain behavior and integration/contract tests for the API boundary; cover unauthorized, invalid, and dependency-failure paths.
+- For a changed protected or public boundary, define the permitted roles, authorization rule, input/output contract, validation, safe errors, and audit event.
+- Add the smallest test coverage that proves changed behavior; include unauthorized, invalid, or dependency-failure paths only when that boundary changed.
 - Make public API changes additive when possible. Record a material compatibility change in an ADR.
 
 ### Database or data model

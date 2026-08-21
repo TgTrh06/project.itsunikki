@@ -1,79 +1,92 @@
 # Product Requirements Document
 
-**Status:** Template — product-specific fields are intentionally marked **TBD**.
+**Status:** First-release definition for a personal productivity and wellbeing tracker.
 **Owner:** TBD
-**Last reviewed:** TBD
+**Last reviewed:** 2026-08-21
 
 ## 1. Product summary
 
 ### Vision
 
-**TBD:** State the enduring user outcome this product enables in one or two sentences.
+Enable one person to manage daily commitments, habits, workouts, and nutrition in one private, understandable workspace, then review their progress without moving data among separate trackers.
 
 ### Problem statement
 
-**TBD:** Describe the validated user problem, who experiences it, its current cost, and why existing alternatives are inadequate. Link supporting research or customer evidence.
+Personal task, habit, fitness, and nutrition records are often fragmented. A person needs a single account-scoped view of what is due today and a reliable history of what they completed, logged, corrected, or deleted.
 
-### Product boundaries
+### First-release scope
 
-- **In scope (TBD):** The capabilities and user segments included in the first release.
-- **Out of scope:** Unvalidated features, unsupported client platforms, bespoke customer workflows, and any use of sensitive data outside the approved purpose.
-- **Open questions (TBD):** Decisions that block implementation, with an owner and decision date.
+- Authenticated personal accounts with isolated data and a stored profile timezone.
+- Tasks with due dates, simple recurrence, completion, correction, and rescheduling.
+- Habits with a frequency/target, scheduled check-ins, progress or streak calculation, and correction.
+- Manual workout and fitness-metric entries.
+- Manual food-item entries with kcal, carbohydrate, fat, protein, and optional user-defined metrics; daily totals are calculated from saved entries.
+- A daily dashboard with in-app due-item guidance and basic daily/weekly history review.
+- Personal profile, export request, and deletion request flows.
 
-## 2. Users and journeys
+### Explicitly out of scope
+
+- Shared workspaces, social features, coaches, administrators managing another person's data, projects, subtasks, dependencies, or advanced schedules.
+- Email, push, SMS, or external reminders; guidance is in-app only.
+- Food catalogs, barcode scanning, recipes, wearable/device synchronization, Apple Health, Google Fit, Strava, or any external health/food provider.
+- Clinical advice, diagnosis, or automated health recommendations.
+
+## 2. Users, data, and journeys
 
 | Persona | Need | Primary journey | Success signal |
 | --- | --- | --- | --- |
-| End user (TBD) | Complete a protected task safely | Sign in → perform task → confirm result | Task completion without support |
-| Administrator (TBD) | Control access and review activity | Manage roles → review audit trail | Least-privilege access is maintained |
-| Support/operations (TBD) | Investigate issues without overexposure | Locate event → diagnose → resolve | Incident is resolved with an audit trail |
+| Personal account holder | See and act on daily commitments in one private place | Sign in → review today → complete or log an activity → confirm progress | Daily records are current without support or another tracker. |
 
-For every priority journey, document the entry point, happy path, empty/error states, permissions required, data created or changed, and exit condition.
+### Data and privacy stance
 
-## 3. Requirements
+- Each account owns only its own records. Every protected read and write enforces account isolation server-side.
+- Workout history, fitness metrics, food entries, kcal, and macro data are sensitive personal data. Collect only data entered for the product's documented purpose.
+- Store an account timezone and use it for due dates, recurring occurrences, daily totals, streaks, and daily/weekly review boundaries.
+- Users may correct or delete their personal entries. Recalculate affected totals, streaks, and projections; retain only minimal redacted audit metadata: actor, timestamp, action, target type/identifier, outcome, and correlation ID.
 
-### Functional requirements
+## 3. Functional requirements
 
 | ID | Requirement | Priority | Acceptance criteria |
 | --- | --- | --- | --- |
-| FR-001 | **TBD:** Describe a user capability in observable language. | Must | **TBD:** Given/when/then criteria, including error and authorization cases. |
-| FR-002 | **TBD** | Should | **TBD** |
+| FR-001 | A person can create an account, sign in, complete first-time profile setup, and access only their own workspace. | Must | A valid session loads the account workspace; invalid or cross-account requests return a safe denial and disclose no private data. |
+| FR-002 | A person can view a daily dashboard of due tasks, habits, and current workout/nutrition progress. | Must | The view uses the profile timezone, has loading/empty/error/success states, and gives in-app guidance without external notifications. |
+| FR-003 | A person can create, update, complete, reschedule, and correct a task with a due date and simple recurrence. | Must | A task update creates or updates the applicable occurrence and recalculates the dashboard without modifying another account's records. |
+| FR-004 | A person can define a habit and record or correct a scheduled check-in. | Must | The system calculates the current progress/streak from saved check-ins and the configured schedule, using the profile timezone. |
+| FR-005 | A person can record, correct, or delete a manual workout and optional fitness metrics. | Must | Saved changes update the relevant daily/weekly history and do not expose health-related content in errors, telemetry, or audit metadata. |
+| FR-006 | A person can add, correct, or delete individual food entries with kcal and macro values. | Must | The system validates numeric values and recalculates meal/day totals after every accepted change. |
+| FR-007 | A person can review personal history by day or week across tasks, habits, workouts, and nutrition. | Must | Review results include only the current account's records, use the profile timezone, and safely handle no-data and partial-data states. |
+| FR-008 | A person can manage profile settings and request personal-data export or deletion. | Must | Sensitive actions require the current authenticated account, record a minimal audit event, and return a safe status without exposing protected data. |
 
-Functional requirements must name the permitted roles, source of truth, validation behavior, and user-visible failure behavior. API and database work must follow [ARCHITECTURE.md](ARCHITECTURE.md).
-
-### Non-functional requirements
+## 4. Non-functional requirements
 
 | Area | Baseline requirement | Product-specific target |
 | --- | --- | --- |
-| Privacy | Collect only data necessary for an approved purpose; document retention and deletion. | **TBD** |
-| Security | Enforce authenticated, least-privilege access; protect secrets and sensitive data in transit and at rest. | **TBD** |
-| Accessibility | Meet WCAG 2.2 AA for supported user flows. | **TBD** |
-| Performance | Define p95 latency and client performance budgets for key journeys. | **TBD** |
-| Availability | Define service-level objectives and user-facing degradation behavior. | **TBD** |
-| Auditability | Record security-relevant access and state changes with actor, action, target, outcome, and correlation ID. | **TBD** |
-| Observability | Emit structured logs, metrics, traces, and actionable alerts without leaking sensitive data. | **TBD** |
+| Privacy | Collect only data necessary for the documented personal-tracking purpose; support correction, export, and deletion requests. | No cross-account exposure; fitness and nutrition data treated as sensitive. |
+| Security | Enforce authenticated, least-privilege access; protect secrets and data in transit and at rest. | Account isolation for every record access and mutation. |
+| Accessibility | Meet WCAG 2.2 AA for supported flows. | Every capability covers loading, empty, error, success, and unauthorized states. |
+| Performance | Define p95 latency and client performance budgets before production. | Dashboard and history targets are TBD. |
+| Availability | Define service-level objectives and degradation behavior before production. | TBD. |
+| Auditability | Record security-relevant access and state changes without sensitive payloads. | Minimal audit records for authentication, corrections/deletions, profile/export/deletion requests. |
+| Observability | Emit redacted logs, metrics, traces, and actionable alerts. | No workout, metric, food, kcal, or macro values in telemetry. |
 
-## 4. Measurement and release
-
-### Success metrics
+## 5. Measurement and release
 
 | Metric | Baseline | Target | Measurement method | Owner |
 | --- | --- | --- | --- | --- |
-| **TBD: outcome metric** | TBD | TBD | TBD | TBD |
-| **TBD: adoption/quality metric** | TBD | TBD | TBD | TBD |
-| Security and privacy incidents | 0 material incidents | 0 | Incident register | TBD |
+| Daily tracking completion | A signed-in user can act on today's records | TBD | Redacted aggregate product metric | TBD |
+| Data accuracy after correction | Changed records update affected summaries | 100% in automated acceptance coverage | Scenario tests | TBD |
+| Material security or privacy incidents | 0 material incidents | 0 | Incident register | TBD |
 
 ### Release criteria
 
-- All Must requirements have passing acceptance tests and approved product sign-off.
-- A privacy and security review has confirmed data uses, permissions, retention, and abuse cases.
-- Accessibility and performance checks meet the stated targets or have an approved, time-bound exception.
-- Monitoring, support guidance, rollback plan, and data migration plan (if applicable) are ready before production release.
+- All Must requirements have passing acceptance tests and owner sign-off.
+- The eight core journeys in [FLOWS.md](FLOWS.md) have approved behavior, state coverage, and accessible UI evidence.
+- Privacy and security review confirms account isolation, sensitive-data handling, audit metadata, correction/deletion behavior, and export/deletion request handling.
+- Monitoring, support guidance, rollback plan, and data-migration plan (if applicable) are ready before production release.
 
-## 5. Risks and dependencies
+## 6. Open decisions and dependencies
 
-| Risk or dependency | Impact | Mitigation | Owner | Status |
-| --- | --- | --- | --- | --- |
-| **TBD** | TBD | TBD | TBD | Open |
-
-Raise architecture, data, or security decisions as ADRs under `docs/adr/` before implementation. See [ARCHITECTURE.md](ARCHITECTURE.md) and [AGENTS.md](../AGENTS.md).
+- Identity provider, session duration, password recovery, and account-verification policy: **TBD** by ADR.
+- Database, migration tooling, encrypted backup/recovery objectives, data retention periods, and export/deletion execution process: **TBD** by ADR.
+- Exact task recurrence, habit frequency, metric units, nutrition validation ranges, dashboard indicators, p95 latency, SLO, and supported regions: **TBD** before production acceptance.
+- Any addition of sharing, external providers, notifications, advanced scheduling, or clinical functionality requires an updated PRD and ADR.
