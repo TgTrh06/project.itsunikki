@@ -6,6 +6,7 @@
 - [Product requirements](docs/PRD.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Architecture essentials](docs/ARCHITECTURE_ESSENTIALS.md)
+- [Activity flows](docs/FLOWS.md)
 - [Delivery governance](docs/GOVERNANCE.md)
 - [UI/UX standard](docs/UI_UX.md)
 - [Task register](docs/TASKS.md)
