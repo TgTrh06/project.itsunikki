@@ -1,8 +1,8 @@
 # Product Requirements Document
 
 **Status:** First-release definition for a personal productivity and wellbeing tracker.
-**Owner:** TBD
-**Last reviewed:** 2026-08-21
+**Owner:** TgTrh06
+**Last reviewed:** 2026-08-22
 
 ## 1. Product summary
 
@@ -66,16 +66,16 @@ Personal task, habit, fitness, and nutrition records are often fragmented. A per
 | Accessibility | Meet WCAG 2.2 AA for supported flows. | Every capability covers loading, empty, error, success, and unauthorized states. |
 | Performance | Define p95 latency and client performance budgets before production. | Dashboard and history targets are TBD. |
 | Availability | Define service-level objectives and degradation behavior before production. | TBD. |
-| Auditability | Record security-relevant access and state changes without sensitive payloads. | Minimal audit records for authentication, corrections/deletions, profile/export/deletion requests. |
+| Auditability | Record minimal audit metadata for authentication outcomes, authorization denials, accepted creates/updates/deletes, and export/deletion requests; do not audit routine dashboard/history reads. | Account-record mutations and privacy requests create records without sensitive payloads. |
 | Observability | Emit redacted logs, metrics, traces, and actionable alerts. | No workout, metric, food, kcal, or macro values in telemetry. |
 
 ## 5. Measurement and release
 
 | Metric | Baseline | Target | Measurement method | Owner |
 | --- | --- | --- | --- | --- |
-| Daily tracking completion | A signed-in user can act on today's records | TBD | Redacted aggregate product metric | TBD |
-| Data accuracy after correction | Changed records update affected summaries | 100% in automated acceptance coverage | Scenario tests | TBD |
-| Material security or privacy incidents | 0 material incidents | 0 | Incident register | TBD |
+| Daily tracking completion | A signed-in user can act on today's records | TBD | Redacted aggregate product metric | TgTrh06 |
+| Data accuracy after correction | Changed records update affected summaries | 100% in automated acceptance coverage | Scenario tests | TgTrh06 |
+| Material security or privacy incidents | 0 material incidents | 0 | Incident register | TgTrh06 |
 
 ### Release criteria
 
@@ -85,6 +85,8 @@ Personal task, habit, fitness, and nutrition records are often fragmented. A per
 - Monitoring, support guidance, rollback plan, and data-migration plan (if applicable) are ready before production release.
 
 ## 6. Open decisions and dependencies
+
+**Decision owner:** TgTrh06. Decision deadlines are tracked in [TASKS.md](TASKS.md) section 1.4.
 
 - Identity provider, session duration, password recovery, and account-verification policy: **TBD** by ADR.
 - Database, migration tooling, encrypted backup/recovery objectives, data retention periods, and export/deletion execution process: **TBD** by ADR.
