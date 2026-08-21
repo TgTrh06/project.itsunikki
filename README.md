@@ -1,5 +1,7 @@
 # project.itsunikki
 
+> Documentation-first baseline: the application has not yet been scaffolded.
+
 ## Project controls
 
 - [Contributor rules](AGENTS.md)
