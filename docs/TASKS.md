@@ -5,6 +5,8 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 ## How to use this file
 
 - Work on one numbered task per session or recorded change.
+- Use one primary agent only; do not delegate or spawn subagents for this project.
+- For coding, select one task, implement one coherent slice, run the smallest relevant validation, then update only the documentation that changed behavior or a material boundary.
 - Mark a task **in progress** before editing and **done** only after its acceptance criteria are verified.
 - If a task cannot be described in one line, split it into smaller tasks.
 - Add newly discovered work beneath the most relevant section; preserve completed task history.
@@ -20,12 +22,14 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 - [x] 0.2 Remove repository-managed GitHub enforcement; retain documentation-led manual controls.
 - [ ] 0.3 Define the manual pre-release checklist after application scaffolding, including lint, typecheck, tests, build, dependency review, and secret review.
 - [ ] 0.4 Run an incident and rollback tabletop exercise; record follow-up tasks and owners.
+- [x] 0.5 Configure the global Codex profile for GPT-5.6 Terra at medium reasoning effort with multi-agent disabled.
+- [x] 0.6 Add and validate the lean `itsunikki-coding` skill and proportional-evidence coding guidance.
 
 ## 1. Discovery and product definition
 
-- [ ] 1.1 Confirm the product vision, target users, and primary problem in [PRD.md](PRD.md).
-- [ ] 1.2 Define the first release scope, explicit out-of-scope items, and measurable success criteria.
-- [ ] 1.3 Define approved data classifications, retention requirements, and product roles.
+- [x] 1.1 Confirm the personal-tracker vision, personal-account user, primary problem, and release-one journeys in [PRD.md](PRD.md).
+- [x] 1.2 Define first-release scope, exclusions, functional requirements, and flow catalog in [FLOWS.md](FLOWS.md).
+- [ ] 1.3 Approve data classifications, retention requirements, export/deletion execution, and account policy through ADRs.
 - [ ] 1.4 Record unresolved product and compliance decisions with an owner and due date.
 
 ## 2. Application foundation
@@ -42,18 +46,23 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 - [ ] 3.3 Implement server-side validation, authorization boundaries, safe errors, rate limits, and request correlation.
 - [ ] 3.4 Configure structured redacted logs, audit events, error tracking, metrics, and alerting.
 
-## 4. Core user experience
+## 4. Release-one user capabilities
 
-- [ ] 4.1 Define the first priority user journey, screen flow, permissions, loading/empty/error states, and acceptance criteria.
-- [ ] 4.2 Implement the first protected user flow with responsive and WCAG 2.2 AA behavior.
-- [ ] 4.3 Implement the administrator flow for the approved role and audit requirements.
-- [ ] 4.4 Add unit, integration/API contract, and end-to-end tests for the critical journeys.
+- [x] 4.1 Define the eight release-one journeys, ownership, protected data, exceptions, and acceptance links in [FLOWS.md](FLOWS.md).
+- [ ] 4.2 Implement account access, first-time profile/timezone setup, account isolation, and safe session failure states.
+- [ ] 4.3 Implement the daily dashboard with in-app due guidance and accessible loading, empty, error, success, and unauthorized states.
+- [ ] 4.4 Implement task creation, simple recurrence, completion, rescheduling, correction, and dashboard refresh.
+- [ ] 4.5 Implement habit setup/check-in/correction and timezone-aware progress or streak calculation.
+- [ ] 4.6 Implement manual workout and optional fitness-metric logging, correction/deletion, redacted telemetry, and history refresh.
+- [ ] 4.7 Implement individual food-item logging with kcal, carb, fat, protein, optional metrics, and recalculated meal/day totals.
+- [ ] 4.8 Implement day/week review and personal-data profile, export-request, and deletion-request flows.
+- [ ] 4.9 Add unit, integration/API contract, and end-to-end tests for account isolation, timezone day boundaries, recurrence, corrections/deletions, aggregate recalculation, sensitive-data redaction, and WCAG 2.2 AA states.
 
-## 5. External integrations
+## 5. Deferred integrations
 
-- [ ] 5.1 Identify the first approved external provider and create its ADR.
-- [ ] 5.2 Implement the provider behind a server-side adapter with timeouts, retries, idempotency, and redacted telemetry.
-- [ ] 5.3 Verify webhook signatures and duplicate-delivery handling where applicable.
+- [ ] 5.1 Keep food catalogs, barcode scanning, wearables, health platforms, external reminders, and social/sharing capabilities out of the first release.
+- [ ] 5.2 Before adding any provider, update the PRD and create an ADR covering consent, data minimization, provider failure, retries, idempotency, and redacted telemetry.
+- [ ] 5.3 Before receiving webhooks, define signature verification, duplicate-delivery handling, and safe failure behavior.
 
 ## 6. Release readiness
 
