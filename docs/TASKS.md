@@ -30,7 +30,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 
 - [x] 1.1 Confirm the personal-tracker vision, personal-account user, primary problem, and release-one journeys in [PRD.md](PRD.md).
 - [x] 1.2 Define first-release scope, exclusions, functional requirements, and flow catalog in [FLOWS.md](FLOWS.md).
-- [ ] 1.3 Approve data classifications, retention requirements, export/deletion execution, and account policy through ADRs.
+- [-] 1.3 Approve data classifications, retention requirements, export/deletion execution, and account policy through ADRs. Authentication and local data decisions are accepted in ADR-0001 and ADR-0002; retention and export/deletion remain deferred.
 - [ ] 1.4 Resolve release-relevant open decisions with the owner and dependency deadline below.
 - [ ] 1.4a Owner: TgTrh06 · Due before 3.1 — approve identity provider, session duration, password recovery, account verification, and RBAC policy through an ADR.
 - [ ] 1.4b Owner: TgTrh06 · Due before 3.2 — approve database, migration tooling, tenancy model, backup/recovery objectives, and data residency through an ADR.
@@ -40,15 +40,15 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 
 ## 2. Application foundation
 
-- [ ] 2.1 Scaffold the Node.js web application and its folder structure.
-- [ ] 2.2 Configure TypeScript, formatting, linting, tests, and documented manual validation commands.
-- [ ] 2.3 Establish accessible theme tokens, typography, layout primitives, and responsive breakpoints.
+- [x] 2.1 Scaffold the Node.js web application and its folder structure.
+- [x] 2.2 Configure TypeScript, formatting, linting, tests, and documented manual validation commands.
+- [x] 2.3 Establish accessible theme tokens, typography, layout primitives, and responsive breakpoints.
 - [ ] 2.4 Configure separate development, preview, staging, and production environments without exposing secrets.
 
 ## 3. Security and platform
 
-- [ ] 3.1 Select and document the identity provider, session model, and RBAC policy.
-- [ ] 3.2 Select and document the managed database, migration tooling, tenancy model, and backup/recovery objectives.
+- [x] 3.1 Select and document the identity provider, session model, and RBAC policy. See ADR-0001.
+- [-] 3.2 Select and document the managed database, migration tooling, tenancy model, and backup/recovery objectives. Local MongoDB tenancy is accepted in ADR-0002; hosted backup/recovery remains deferred.
 - [ ] 3.3 Implement server-side validation, authorization boundaries, safe errors, rate limits, and request correlation.
 - [ ] 3.4 Configure structured redacted logs, audit events, error tracking, metrics, and alerting.
 
