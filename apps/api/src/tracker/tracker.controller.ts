@@ -1,12 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Req, UseGuards } from '@nestjs/common';
 import { SupabaseAuthGuard, AuthenticatedRequest } from '../auth/supabase-auth.guard';
 import { CheckInDto, FoodDto, HabitDto, ProfileDto, TaskDto, UpdateFoodDto, UpdateHabitDto, UpdateTaskDto, UpdateWorkoutDto, WorkoutDto } from './dto';
-import { TrackerService } from './tracker.service';
+import { TrackerUseCases } from '../application/tracker/tracker.use-cases';
 
 @Controller()
 @UseGuards(SupabaseAuthGuard)
 export class TrackerController {
-  constructor(private readonly tracker: TrackerService) {}
+  constructor(private readonly tracker: TrackerUseCases) {}
   private account(request: AuthenticatedRequest) { return request.accountId!; }
   private correlation(request: AuthenticatedRequest) { return request.correlationId!; }
 
