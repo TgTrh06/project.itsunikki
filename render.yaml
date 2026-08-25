@@ -7,11 +7,11 @@ services:
     buildCommand: npm ci && npm run build --workspace=@itsunikki/api
     startCommand: node apps/api/dist/src/main.js
     healthCheckPath: /v1/health
-    autoDeploy: true
+    autoDeployTrigger: commit
     envVars:
       - key: NODE_ENV
         value: production
-      - key: MONGODB_URI
+      - key: DATABASE_URL
         sync: false
       - key: SUPABASE_JWT_ISSUER
         sync: false

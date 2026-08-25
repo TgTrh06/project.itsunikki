@@ -48,7 +48,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 ## 3. Security and platform
 
 - [x] 3.1 Select and document the identity provider, session model, and RBAC policy. See ADR-0001.
-- [-] 3.2 Select and document the managed database, migration tooling, tenancy model, and backup/recovery objectives. Atlas M0 hosting and its free-tier limits are accepted in ADR-0004; backup/recovery objectives remain deferred.
+- [-] 3.2 Select and document the managed database, migration tooling, tenancy model, and backup/recovery objectives. Supabase Postgres and migration/RLS boundaries are accepted in ADR-0005; backup/recovery objectives remain deferred.
 - [ ] 3.3 Implement server-side validation, authorization boundaries, safe errors, rate limits, and request correlation.
 - [ ] 3.4 Configure structured redacted logs, audit events, error tracking, metrics, and alerting.
 

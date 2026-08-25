@@ -1,6 +1,6 @@
 # 0004: Free cloud deployment for personal real data
 
-**Status:** Accepted
+**Status:** Superseded in its Atlas/storage scope by [ADR-0005](0005-supabase-postgres-tracker-storage.md)
 **Date:** 2026-08-25
 **Owners:** TgTrh06
 

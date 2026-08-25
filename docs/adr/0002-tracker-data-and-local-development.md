@@ -1,6 +1,6 @@
 # 0002: MongoDB tracker data and local development boundary
 
-**Status:** Accepted
+**Status:** Superseded by [ADR-0005](0005-supabase-postgres-tracker-storage.md)
 **Date:** 2026-08-22
 **Owners:** TgTrh06
 
