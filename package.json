@@ -1,0 +1,24 @@
+{
+  "name": "itsunikki",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "dev:web": "npm run dev --workspace=@itsunikki/web",
+    "dev:api": "npm run start:dev --workspace=@itsunikki/api"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "bs-logger": "^0.2.6",
+    "json-schema-traverse": "^1.0.0",
+    "tinyglobby": "^0.2.17"
+  }
+}

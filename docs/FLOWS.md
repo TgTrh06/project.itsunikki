@@ -11,6 +11,7 @@
 - Each diagram shows one happy path and one meaningful rejection path. Detailed UI loading, empty, error, success, and unauthorized states are required by [UI_UX.md](UI_UX.md).
 - Dates, recurrence, daily totals, habit progress, and review windows use the stored profile timezone.
 - Fitness, nutrition, kcal, macro, and user-defined metric values are sensitive personal data. Diagrams name audit events but never include sensitive payloads.
+- Audit records cover authentication outcomes, authorization denials, accepted creates/updates/deletes, and export/deletion requests; routine dashboard and history reads are not audited.
 - Incident and release/rollback procedures are operational, not product journeys. Follow [Incident Response](runbooks/INCIDENT_RESPONSE.md) and [Release and Rollback](runbooks/RELEASE_ROLLBACK.md) instead of duplicating them here.
 
 ## 2. Capability map
@@ -34,7 +35,7 @@ flowchart TB
 | ID | Journey and trigger | Authorization and data changed | Audit and exit | Exception | PRD |
 | --- | --- | --- | --- | --- | --- |
 | BF-01 | Access the app or complete first-time setup | Current identity; account/profile with timezone | Authentication outcome; workspace opens | Invalid identity or session is safely rejected | FR-001 |
-| BF-02 | Open today’s view | Current account; dashboard projection reads due items and daily totals | Protected dashboard read; daily guidance appears | Unauthorized or unavailable data is safely rejected | FR-002 |
+| BF-02 | Open today’s view | Current account; dashboard projection reads due items and daily totals | Account-scoped dashboard read; daily guidance appears | Unauthorized or unavailable data is safely rejected | FR-002 |
 | BF-03 | Create, complete, reschedule, or correct a task | Current account; task and scheduled occurrence | Task mutation; dashboard projection refreshes | Invalid input or recurrence is safely rejected | FR-003 |
 | BF-04 | Define, check in, or correct a habit | Current account; habit and check-in | Habit mutation; progress/streak recalculates | Invalid schedule or input is safely rejected | FR-004 |
 | BF-05 | Log, correct, or delete a workout/metric | Current account; workout and optional metric | Sensitive personal-data mutation; history recalculates | Invalid metric/input is safely rejected | FR-005 |
@@ -46,11 +47,11 @@ flowchart TB
 
 | Concept | Owner and purpose | Derived or audit behavior |
 | --- | --- | --- |
-| Account and profile | Stores the account boundary, preferences, and timezone. | Authentication and profile/export/deletion requests create minimal audit records. |
-| Task and scheduled occurrence | Stores a task’s due date, simple recurrence, and the occurrence acted upon. | Dashboard due items refresh after accepted changes. |
-| Habit and check-in | Stores the configured habit and dated completion record. | Progress/streak is recalculated from the schedule and check-ins. |
-| Workout and metric | Stores manual workout records and optional user-defined fitness metrics. | Daily/weekly history refreshes after accepted correction or deletion. |
-| Food entry and nutrition total | Stores each manually entered food item and its kcal/macros. | Meal/day totals are derived from current entries, not independently edited. |
+| Account and profile | Stores the account boundary, preferences, and timezone. | Authentication outcomes, authorization denials, accepted profile changes, and export/deletion requests create minimal audit records. |
+| Task and scheduled occurrence | Stores a task’s due date, simple recurrence, and the occurrence acted upon. | Accepted creates/updates/deletes create a minimal audit record and refresh dashboard due items. |
+| Habit and check-in | Stores the configured habit and dated completion record. | Accepted creates/updates/deletes create a minimal audit record; progress/streak is recalculated from the schedule and check-ins. |
+| Workout and metric | Stores manual workout records and optional user-defined fitness metrics. | Accepted creates/updates/deletes create a minimal audit record and refresh daily/weekly history. |
+| Food entry and nutrition total | Stores each manually entered food item and its kcal/macros. | Accepted creates/updates/deletes create a minimal audit record; meal/day totals are derived from current entries, not independently edited. |
 | Dashboard projection | Provides account-scoped due items and daily progress. | It is rebuilt or refreshed from source records after accepted changes. |
 | Minimal audit event | Records actor, time, action, target type/identifier, outcome, and correlation ID. | It never contains workout, metric, food, kcal, macro, or other sensitive payloads. |
 
@@ -81,7 +82,7 @@ flowchart TB
     P1 --> C1 --> S1 --> S2
     S1 -->|Invalid| S3
     S2 -->|Yes| A1 --> A3 --> C2
-    S2 -->|No| A2 --> A3
+    S2 -->|No| A2 --> A3 --> C2
 ```
 
 ## 6. BF-02 — Daily dashboard and in-app guidance

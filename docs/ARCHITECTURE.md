@@ -38,7 +38,7 @@ Browser ──TLS──> Vercel web/client ──> Node.js serverless API ──
 
 ### Audit events
 
-Record security-relevant reads, writes, permission changes, exports, login/security events, and administrator actions. Events must include timestamp, actor or service identity, action, resource type/identifier, tenant where applicable, outcome, request/correlation ID, and metadata that excludes secrets and sensitive payloads.
+Record minimal audit events for authentication outcomes, authorization denials, accepted creates/updates/deletes of account records, export/deletion requests, and privileged actions. Do not audit routine dashboard or history reads. Events must include timestamp, actor or service identity, action, resource type/identifier, tenant where applicable, outcome, request/correlation ID, and metadata that excludes secrets and sensitive payloads.
 
 ## 3. Application boundaries and interfaces
 
