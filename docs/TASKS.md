@@ -40,7 +40,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 
 ## 2. Application foundation
 
-- [x] 2.1 Scaffold the Node.js web application and its folder structure.
+- [x] 2.1 Scaffold the Node.js web application and its folder structure. React/Vite and clean boundaries are recorded in ADR-0003.
 - [x] 2.2 Configure TypeScript, formatting, linting, tests, and documented manual validation commands.
 - [x] 2.3 Establish accessible theme tokens, typography, layout primitives, and responsive breakpoints.
 - [ ] 2.4 Configure separate development, preview, staging, and production environments without exposing secrets.
@@ -48,7 +48,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 ## 3. Security and platform
 
 - [x] 3.1 Select and document the identity provider, session model, and RBAC policy. See ADR-0001.
-- [-] 3.2 Select and document the managed database, migration tooling, tenancy model, and backup/recovery objectives. Local MongoDB tenancy is accepted in ADR-0002; hosted backup/recovery remains deferred.
+- [-] 3.2 Select and document the managed database, migration tooling, tenancy model, and backup/recovery objectives. Atlas M0 hosting and its free-tier limits are accepted in ADR-0004; backup/recovery objectives remain deferred.
 - [ ] 3.3 Implement server-side validation, authorization boundaries, safe errors, rate limits, and request correlation.
 - [ ] 3.4 Configure structured redacted logs, audit events, error tracking, metrics, and alerting.
 
@@ -72,7 +72,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 
 ## 6. Release readiness
 
-- [ ] 6.1 Create the staging deployment, health checks, preview-data isolation, and production promotion workflow.
+- [-] 6.1 Prepare the free cloud deployment, health checks, preview-data isolation, and production promotion workflow. Repository configuration is ready; provider provisioning and smoke verification await owner access.
 - [ ] 6.2 Define release dashboards, alert thresholds, support procedures, and an incident runbook.
 - [ ] 6.3 Verify rollback for application code and the migration/compensating-change plan for schema changes.
 - [ ] 6.4 Complete the first-release checklist in [PRD.md](PRD.md) and obtain required reviews.

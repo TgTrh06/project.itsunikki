@@ -12,7 +12,7 @@ Tasks, habits, workouts, food entries, and derived daily views are private accou
 
 Use MongoDB as the tracker and minimal-audit store. Run MongoDB locally with Docker during the trial. Each persisted document includes the authenticated account ID; repositories require that ID for all reads, updates, and deletes. Nutrition totals and dashboard summaries are derived from entries rather than stored as independently editable totals.
 
-Next.js is deployed only as a Vercel UI/build preview. NestJS and the MongoDB connection run locally, so preview builds clearly state that live API features are local-only. No production or cloud MongoDB resource is created by this change.
+The original Next.js preview decision is superseded by ADR-0003. Vercel continues to host an UI/build-only preview; NestJS and MongoDB run locally, so preview builds clearly state that live API features are local-only. No production or cloud MongoDB resource is created by this change.
 
 ## Alternatives considered
 
