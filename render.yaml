@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: itsunikki-api
+    runtime: node
+    region: singapore
+    plan: free
+    buildCommand: npm ci && npm run build --workspace=@itsunikki/api
+    startCommand: node apps/api/dist/src/main.js
+    healthCheckPath: /v1/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: SUPABASE_JWT_ISSUER
+        sync: false
+      - key: WEB_ORIGIN
+        sync: false
