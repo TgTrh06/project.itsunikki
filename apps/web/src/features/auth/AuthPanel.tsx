@@ -1,0 +1,10 @@
+import { type FormEvent, useState } from 'react';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import { useAppStore } from '../../app/store';
+
+export function AuthPanel({ client }: { client: SupabaseClient }) {
+  const setNotice = useAppStore((state) => state.setNotice); const notice = useAppStore((state) => state.notice);
+  const [email, setEmail] = useState(''); const [password, setPassword] = useState(''); const [mode, setMode] = useState<'sign-in' | 'sign-up'>('sign-in'); const [busy, setBusy] = useState(false);
+  async function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); setBusy(true); setNotice(''); const result = mode === 'sign-in' ? await client.auth.signInWithPassword({ email, password }) : await client.auth.signUp({ email, password }); setBusy(false); setNotice(result.error ? 'We could not complete that request. Check your details and try again.' : mode === 'sign-up' ? 'Check your email to confirm your account, then sign in.' : 'Signed in successfully.'); }
+  return <main className="centered"><section className="auth-card" aria-labelledby="welcome-title"><p className="eyebrow">Private daily tracker</p><h1 id="welcome-title">A clearer day, in one place.</h1><p>Tasks, habits, workouts, and food records stay scoped to your account.</p><form onSubmit={submit}><label>Email<input autoComplete="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} required /></label><label>Password<input autoComplete={mode === 'sign-in' ? 'current-password' : 'new-password'} type="password" minLength={8} value={password} onChange={(event) => setPassword(event.target.value)} required /></label><button disabled={busy}>{busy ? 'Working…' : mode === 'sign-in' ? 'Sign in' : 'Create account'}</button></form>{notice && <p role="status" className="notice">{notice}</p>}<button className="text-button" onClick={() => setMode(mode === 'sign-in' ? 'sign-up' : 'sign-in')}>{mode === 'sign-in' ? 'Need an account? Sign up' : 'Already have an account? Sign in'}</button></section></main>;
+}

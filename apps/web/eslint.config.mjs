@@ -1,6 +1,6 @@
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config({
-  files: ['app/**/*.ts', 'app/**/*.tsx', 'lib/**/*.ts'],
+  files: ['src/**/*.ts', 'src/**/*.tsx'],
   extends: [...tseslint.configs.recommended],
 });
