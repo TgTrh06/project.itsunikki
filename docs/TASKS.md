@@ -72,7 +72,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 
 ## 6. Release readiness
 
-- [-] 6.1 Prepare the free cloud deployment, health checks, preview-data isolation, and production promotion workflow. Repository configuration is ready; provider provisioning and smoke verification await owner access.
+- [x] 6.1 Prepare the free cloud deployment, health checks, preview-data isolation, and production promotion workflow. Verified 2026-08-26 ICT: [Vercel web](https://project-itsunikki-web.vercel.app) deploys from `main`; [Render API health](https://itsunikki-api.onrender.com/v1/health) deploys from `main`; production CORS and Supabase Auth redirects use the fixed Vercel origin; Vercel Preview receives no API/database configuration.
 - [ ] 6.2 Define release dashboards, alert thresholds, support procedures, and an incident runbook.
 - [ ] 6.3 Verify rollback for application code and the migration/compensating-change plan for schema changes.
 - [ ] 6.4 Complete the first-release checklist in [PRD.md](PRD.md) and obtain required reviews.
