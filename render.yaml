@@ -4,7 +4,7 @@ services:
     runtime: node
     region: singapore
     plan: free
-    buildCommand: npm ci && npm run build --workspace=@itsunikki/api
+    buildCommand: npm ci --include=dev && npm run build --workspace=@itsunikki/api
     startCommand: node apps/api/dist/src/main.js
     healthCheckPath: /v1/health
     autoDeployTrigger: commit
