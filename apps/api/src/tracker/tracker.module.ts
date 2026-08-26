@@ -4,8 +4,10 @@ import { TRACKER_REPOSITORY } from '../domain/tracker/tracker-repository.port';
 import { TrackerUseCases } from '../application/tracker/tracker.use-cases';
 import { PostgresDatabase } from '../infrastructure/persistence/postgres/postgres.database';
 import { PostgresTrackerRepository } from '../infrastructure/persistence/postgres/postgres-tracker.repository';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
+  imports: [AuthModule],
   controllers: [TrackerController],
   providers: [
     PostgresDatabase,
