@@ -1,13 +1,15 @@
-# UI/UX Standard
+# UI/UX — dịu dàng, rõ ràng, luôn trong tầm tay ✨
+
+> itsunikki không cần ồn ào để đẹp. Mỗi màn hình nên giúp người dùng biết mình đang ở đâu, làm gì tiếp theo và dữ liệu của mình đang được tôn trọng.
 
 **Status:** Mandatory baseline for every user-facing change.
 **Authority:** Read this document before creating or changing screens, flows, components, content, or user-visible API errors. [ARCHITECTURE.md](ARCHITECTURE.md) remains authoritative for security and system boundaries.
 
-## 1. Required outcomes
+## 1. Kết quả cần đạt
 
 Every supported user flow must be understandable, keyboard-operable, responsive, and usable with assistive technology. The acceptance target is WCAG 2.2 AA unless an approved, time-bound exception is recorded in the change record.
 
-## 2. Design and interaction rules
+## 2. Nguyên tắc thiết kế & tương tác
 
 - Use the approved design tokens and reusable components once they exist; do not introduce one-off colors, spacing scales, typography, or interaction patterns without documenting the need.
 - Use semantic HTML first. Controls must use native elements where possible, have visible labels, clear focus indicators, and keyboard behavior matching user expectations.
@@ -16,7 +18,7 @@ Every supported user flow must be understandable, keyboard-operable, responsive,
 - Never communicate state through color, animation, iconography, or sound alone. Respect `prefers-reduced-motion` and avoid motion that obscures or delays a task.
 - Write concise, action-oriented copy. Use plain-language labels and errors that say what happened, what the user can do next, and how to get help when recovery is impossible.
 
-## 3. Required states
+## 3. Những trạng thái phải có
 
 For each asynchronous or data-dependent screen, implement and review:
 
@@ -28,7 +30,7 @@ For each asynchronous or data-dependent screen, implement and review:
 | Success | Confirm the completed action and any durable effect without relying only on transient toast messages. |
 | Unauthorized | Do not leak restricted data; explain allowed recovery such as sign-in, requesting access, or returning safely. |
 
-## 4. Accessibility and privacy checklist
+## 4. Checklist tiếp cận & riêng tư
 
 - [ ] Keyboard-only navigation reaches and operates every control, including dialogs and custom widgets.
 - [ ] Visible focus, contrast, text resizing, responsive reflow, and target sizes meet WCAG 2.2 AA for the changed flow.
@@ -37,10 +39,10 @@ For each asynchronous or data-dependent screen, implement and review:
 - [ ] User-facing messages, analytics events, screenshots, and support diagnostics do not expose sensitive data.
 - [ ] Loading, empty, error, success, and permission-denied states are implemented and tested.
 
-## 5. Review evidence
+## 5. Bằng chứng review
 
 The change record for UI work must include before/after screenshots or a concise recording for affected states, viewport coverage, keyboard/accessibility test evidence, and the relevant acceptance criteria from [PRD.md](PRD.md). A material design-system change requires an ADR under `adr/`.
 
-## 6. Exceptions
+## 6. Ngoại lệ
 
 An exception must state the unmet rule, affected users, risk, mitigation, owner, expiry date, and follow-up task. It requires approval from the repository owner and may not weaken authentication, authorization, or sensitive-data protection.
