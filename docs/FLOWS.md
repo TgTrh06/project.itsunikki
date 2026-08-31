@@ -1,10 +1,12 @@
-# Business Flow Catalog
+# Flow catalog — những nhịp điệu của itsunikki 🌿
+
+> Mỗi flow là một lời hứa nhỏ: khi bạn cần ghi lại điều gì, đường đi sẽ rõ ràng, an toàn và thuộc về riêng bạn.
 
 **Status:** First-release activity-flow analysis for the personal productivity and wellbeing tracker.
 **Authority:** This catalog explains ownership and handoffs. [PRD.md](PRD.md) is authoritative for product intent; [ARCHITECTURE.md](ARCHITECTURE.md) is authoritative for system controls; the runbooks remain authoritative for incident and release procedures.
 **Compatibility:** All diagrams use standard Mermaid `flowchart TB` syntax with top-level subgraphs as swimlane-style ownership groups. They render in the current repository previewer.
 
-## 1. Coverage and reading rules
+## 1. Phạm vi & cách đọc
 
 - One personal account holder owns all release-one records. There are no shared workspaces or administrator flows.
 - Every flow enforces the current account before a protected read or write. A safe rejection ends the flow without revealing another account's data.
@@ -14,7 +16,7 @@
 - Audit records cover authentication outcomes, authorization denials, accepted creates/updates/deletes, and export/deletion requests; routine dashboard and history reads are not audited.
 - Incident and release/rollback procedures are operational, not product journeys. Follow [Incident Response](runbooks/INCIDENT_RESPONSE.md) and [Release and Rollback](runbooks/RELEASE_ROLLBACK.md) instead of duplicating them here.
 
-## 2. Capability map
+## 2. Bản đồ khả năng
 
 ```mermaid
 flowchart TB
@@ -30,7 +32,7 @@ flowchart TB
     A --> H[Personal data management]
 ```
 
-## 3. Flow analysis register
+## 3. Sổ tay phân tích flow
 
 | ID | Journey and trigger | Authorization and data changed | Audit and exit | Exception | PRD |
 | --- | --- | --- | --- | --- | --- |
@@ -43,7 +45,7 @@ flowchart TB
 | BF-07 | Review a day or week | Current account; historical records and derived summaries | Protected review read; unified summary appears | Unauthorized or unavailable data is safely rejected | FR-007 |
 | BF-08 | Change profile or request export/deletion | Current account; profile or queued privacy request | Sensitive-action audit; safe request status appears | Invalid or unauthorized request is safely rejected | FR-008 |
 
-## 4. Conceptual ownership and history policy
+## 4. Quyền sở hữu & lịch sử
 
 | Concept | Owner and purpose | Derived or audit behavior |
 | --- | --- | --- |
@@ -57,7 +59,7 @@ flowchart TB
 
 Users may correct or delete their own historical task, habit, workout, metric, and food records. The system recalculates the affected occurrence, totals, streak/progress, dashboard, and review projection, then records only the minimal audit event.
 
-## 5. BF-01 — Account access and first-time setup
+## 5. BF-01 — Vào ứng dụng & thiết lập lần đầu
 
 ```mermaid
 flowchart TB
@@ -85,7 +87,7 @@ flowchart TB
     S2 -->|No| A2 --> A3 --> C2
 ```
 
-## 6. BF-02 — Daily dashboard and in-app guidance
+## 6. BF-02 — Dashboard mỗi ngày & hướng dẫn trong ứng dụng
 
 ```mermaid
 flowchart TB
@@ -111,7 +113,7 @@ flowchart TB
     S1 --> D1 --> D2 --> S2 --> C2
 ```
 
-## 7. BF-03 — Task lifecycle
+## 7. BF-03 — Vòng đời một task
 
 ```mermaid
 flowchart TB
@@ -137,7 +139,7 @@ flowchart TB
     S2 -->|Yes| D1 --> D2 --> D3
 ```
 
-## 8. BF-04 — Habit setup and check-in
+## 8. BF-04 — Tạo habit & check-in
 
 ```mermaid
 flowchart TB
@@ -163,7 +165,7 @@ flowchart TB
     S2 -->|Yes| D1 --> D2 --> D3
 ```
 
-## 9. BF-05 — Workout and fitness metric logging
+## 9. BF-05 — Ghi buổi tập & chỉ số thể chất
 
 ```mermaid
 flowchart TB
@@ -189,7 +191,7 @@ flowchart TB
     S2 -->|Yes| D1 --> D2 --> D3
 ```
 
-## 10. BF-06 — Food item and macro logging
+## 10. BF-06 — Ghi món ăn & macro
 
 ```mermaid
 flowchart TB
@@ -215,7 +217,7 @@ flowchart TB
     S2 -->|Yes| D1 --> D2 --> D3
 ```
 
-## 11. BF-07 — Day and week review
+## 11. BF-07 — Nhìn lại ngày & tuần
 
 ```mermaid
 flowchart TB
@@ -241,7 +243,7 @@ flowchart TB
     S1 --> D1 --> D2 --> S2 --> C2
 ```
 
-## 12. BF-08 — Personal data management
+## 12. BF-08 — Quản lý dữ liệu cá nhân
 
 ```mermaid
 flowchart TB
