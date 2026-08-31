@@ -5,9 +5,15 @@ import { schema } from './schema';
 
 export type TrackerDatabase = NodePgDatabase<typeof schema>;
 
+export function databaseSslConfig(environment: NodeJS.ProcessEnv = process.env) {
+  const certificateAuthority = environment.DATABASE_SSL_CA?.replace(/\\n/g, '\n');
+  if (certificateAuthority) return { ca: certificateAuthority, rejectUnauthorized: true };
+  return environment.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined;
+}
+
 @Injectable()
 export class PostgresDatabase implements OnModuleDestroy {
-  private readonly pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5, ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined });
+  private readonly pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5, ssl: databaseSslConfig() });
 
   async withAccount<T>(accountId: string, operation: (database: TrackerDatabase) => Promise<T>): Promise<T> {
     const client = await this.pool.connect();

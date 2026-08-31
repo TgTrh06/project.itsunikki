@@ -1,12 +1,14 @@
-# Delivery Governance
+# Delivery governance — làm kỹ, đi xa 🧭
+
+> Sự sáng tạo của itsunikki cần một khung đủ vững: rõ ai quyết, rõ khi nào dừng, rõ cách quay về an toàn.
 
 **Status:** Manual, proportionate control baseline.
 
-## Authority
+## Quyền quyết định
 
 [AGENTS.md](../AGENTS.md) is the default coding contract. Read this document only for a material, sensitive, release, or operational change. [ARCHITECTURE.md](ARCHITECTURE.md) is the detailed technical authority; approved ADRs supersede prior decisions in their stated scope.
 
-## Change levels
+## Cấp độ thay đổi
 
 | Level | Examples | Required record |
 | --- | --- | --- |
@@ -14,13 +16,13 @@
 | Feature | Approved PRD/flow behavior within existing boundaries | Relevant tests; UI/UX evidence if user-facing; update product/flow docs only when behavior changes. |
 | Material or sensitive | Architecture, authentication, sensitive data, public contract, provider, deployment, or irreversible migration | ADR, focused impact review, validation, and rollback/migration notes where applicable. |
 
-## ADR and exceptions
+## ADR & ngoại lệ
 
 - Create an ADR before a material decision involving architecture, authentication, sensitive data, storage/retention, public API compatibility, providers, deployment, or an irreversible migration.
 - Do not create ADRs for routine implementation choices within an approved boundary.
 - An exception is time-bound, owned, recorded with the changed task, and cannot permit committed secrets, direct production changes, bypassed authorization, or destructive unreviewed migration.
 
-## Manual release control
+## Kiểm soát phát hành thủ công
 
 - `develop` is the integration/staging branch and `main` is the production branch by convention; neither is repository-enforced.
 - Before production promotion, verify only the checks relevant to the release: changed behavior, security/privacy impact, UI/UX impact, observability, and rollback readiness.

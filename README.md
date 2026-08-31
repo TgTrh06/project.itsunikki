@@ -1,8 +1,10 @@
-# itsunikki
+# itsunikki — một góc nhỏ cho những ngày đang sống 🌙
 
-Private daily tracker: tasks, habits, workouts, nutrition, and review. The client is React + Vite; the API is NestJS.
+> _Gom việc cần làm, nhịp quen thuộc, buổi tập, bữa ăn và một chút nhìn lại — để mỗi ngày không trôi qua vội vàng._
 
-## Local development
+**itsunikki** là nhật ký theo dõi cá nhân riêng tư. Web client dùng React + Vite; API dùng NestJS. Mọi thứ ở đây được thiết kế để bạn ghi nhận điều quan trọng một cách dịu dàng, nhưng dữ liệu vẫn được bảo vệ thật kỹ.
+
+## ✦ Bắt đầu ở máy local
 
 1. Copy `.env.example` to `.env` at the repository root and provide a Supabase development project URL, issuer, and public anonymous key. Both workspaces explicitly load this root file; do not commit it.
 2. Configure a Supabase development project or local Supabase CLI stack, then set its server-only `DATABASE_URL`. Run `supabase db reset` to apply [`supabase/migrations`](supabase/migrations).
@@ -12,7 +14,7 @@ Private daily tracker: tasks, habits, workouts, nutrition, and review. The clien
 
 The Vercel preview is intentionally UI-only. It must not receive database or server-side Supabase settings, and it clearly identifies the unavailable local API. The SPA fallback is defined in `apps/web/vercel.json`.
 
-## Free cloud deployment
+## ☁️ Đưa góc nhỏ này lên mây miễn phí
 
 The approved personal-data trial topology is Vercel Hobby (React SPA) -> Render Free (NestJS API) -> Supabase Free (Auth and Postgres). See [ADR-0005](docs/adr/0005-supabase-postgres-tracker-storage.md) for the security boundary, limitations, and rollback plan.
 
@@ -24,10 +26,10 @@ The approved personal-data trial topology is Vercel Hobby (React SPA) -> Render 
 
 This is a personal, zero-cost trial only. Render Free services sleep after inactivity and Supabase free projects can pause after inactivity. Free Supabase projects do not include automatic backups or point-in-time recovery; make regular off-site logical exports before relying on real data. Do not upload production secrets or real data to Vercel previews.
 
-## Validation
+## ✓ Kiểm tra trước khi yên tâm
 
 Run `npm run lint`, `npm run typecheck`, `npm test`, and `npm run build`.
 
-## Security boundary
+## 🔒 Ranh giới riêng tư
 
 NestJS validates the Supabase Bearer token and derives account ownership from its verified `sub` claim. Tracker records and audit events are queried with that account ID. Do not send sensitive tracker values to logs, errors, analytics, test fixtures, or Vercel previews.

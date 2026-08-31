@@ -1,20 +1,22 @@
-# Product Requirements Document
+# PRD — điều itsunikki muốn gìn giữ ✦
+
+> Một công cụ nhỏ để ngày sống có dấu vết, không phải một cỗ máy bắt bạn sống theo khuôn.
 
 **Status:** First-release definition for a personal productivity and wellbeing tracker.
 **Owner:** TgTrh06
 **Last reviewed:** 2026-08-22
 
-## 1. Product summary
+## 1. Bức tranh sản phẩm
 
-### Vision
+### Tầm nhìn
 
 Enable one person to manage daily commitments, habits, workouts, and nutrition in one private, understandable workspace, then review their progress without moving data among separate trackers.
 
-### Problem statement
+### Vấn đề cần giải quyết
 
 Personal task, habit, fitness, and nutrition records are often fragmented. A person needs a single account-scoped view of what is due today and a reliable history of what they completed, logged, corrected, or deleted.
 
-### First-release scope
+### Phạm vi bản phát hành đầu tiên
 
 - Authenticated personal accounts with isolated data and a stored profile timezone.
 - Tasks with due dates, simple recurrence, completion, correction, and rescheduling.
@@ -24,27 +26,27 @@ Personal task, habit, fitness, and nutrition records are often fragmented. A per
 - A daily dashboard with in-app due-item guidance and basic daily/weekly history review.
 - Personal profile, export request, and deletion request flows.
 
-### Explicitly out of scope
+### Những điều chủ động không làm
 
 - Shared workspaces, social features, coaches, administrators managing another person's data, projects, subtasks, dependencies, or advanced schedules.
 - Email, push, SMS, or external reminders; guidance is in-app only.
 - Food catalogs, barcode scanning, recipes, wearable/device synchronization, Apple Health, Google Fit, Strava, or any external health/food provider.
 - Clinical advice, diagnosis, or automated health recommendations.
 
-## 2. Users, data, and journeys
+## 2. Người dùng, dữ liệu & hành trình
 
 | Persona | Need | Primary journey | Success signal |
 | --- | --- | --- | --- |
 | Personal account holder | See and act on daily commitments in one private place | Sign in → review today → complete or log an activity → confirm progress | Daily records are current without support or another tracker. |
 
-### Data and privacy stance
+### Lập trường về dữ liệu & riêng tư
 
 - Each account owns only its own records. Every protected read and write enforces account isolation server-side.
 - Workout history, fitness metrics, food entries, kcal, and macro data are sensitive personal data. Collect only data entered for the product's documented purpose.
 - Store an account timezone and use it for due dates, recurring occurrences, daily totals, streaks, and daily/weekly review boundaries.
 - Users may correct or delete their personal entries. Recalculate affected totals, streaks, and projections; retain only minimal redacted audit metadata: actor, timestamp, action, target type/identifier, outcome, and correlation ID.
 
-## 3. Functional requirements
+## 3. Những điều sản phẩm cần làm
 
 | ID | Requirement | Priority | Acceptance criteria |
 | --- | --- | --- | --- |
@@ -57,7 +59,7 @@ Personal task, habit, fitness, and nutrition records are often fragmented. A per
 | FR-007 | A person can review personal history by day or week across tasks, habits, workouts, and nutrition. | Must | Review results include only the current account's records, use the profile timezone, and safely handle no-data and partial-data states. |
 | FR-008 | A person can manage profile settings and request personal-data export or deletion. | Must | Sensitive actions require the current authenticated account, record a minimal audit event, and return a safe status without exposing protected data. |
 
-## 4. Non-functional requirements
+## 4. Những điều sản phẩm cần giữ vững
 
 | Area | Baseline requirement | Product-specific target |
 | --- | --- | --- |
@@ -69,7 +71,7 @@ Personal task, habit, fitness, and nutrition records are often fragmented. A per
 | Auditability | Record minimal audit metadata for authentication outcomes, authorization denials, accepted creates/updates/deletes, and export/deletion requests; do not audit routine dashboard/history reads. | Account-record mutations and privacy requests create records without sensitive payloads. |
 | Observability | Emit redacted logs, metrics, traces, and actionable alerts. | No workout, metric, food, kcal, or macro values in telemetry. |
 
-## 5. Measurement and release
+## 5. Đo lường & phát hành
 
 | Metric | Baseline | Target | Measurement method | Owner |
 | --- | --- | --- | --- | --- |
@@ -77,14 +79,14 @@ Personal task, habit, fitness, and nutrition records are often fragmented. A per
 | Data accuracy after correction | Changed records update affected summaries | 100% in automated acceptance coverage | Scenario tests | TgTrh06 |
 | Material security or privacy incidents | 0 material incidents | 0 | Incident register | TgTrh06 |
 
-### Release criteria
+### Tiêu chí phát hành
 
 - All Must requirements have passing acceptance tests and owner sign-off.
 - The eight core journeys in [FLOWS.md](FLOWS.md) have approved behavior, state coverage, and accessible UI evidence.
 - Privacy and security review confirms account isolation, sensitive-data handling, audit metadata, correction/deletion behavior, and export/deletion request handling.
 - Monitoring, support guidance, rollback plan, and data-migration plan (if applicable) are ready before production release.
 
-## 6. Open decisions and dependencies
+## 6. Những điều còn để ngỏ
 
 **Decision owner:** TgTrh06. Decision deadlines are tracked in [TASKS.md](TASKS.md) section 1.4.
 
