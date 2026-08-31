@@ -1,8 +1,10 @@
-# Tasks
+# Tasks — từng mẩu việc, từng bước đi 🫧
+
+> Không cần làm tất cả cùng lúc. Chọn một việc, hoàn thành một lát cắt tử tế, rồi mới đi tiếp.
 
 Use this file to plan and deliver the `itsunikki` application in small, reviewable steps.
 
-## How to use this file
+## Cách dùng trang này
 
 - Work on one numbered task per session or recorded change.
 - Use one primary agent only; do not delegate or spawn subagents for this project.
@@ -16,7 +18,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 
 ---
 
-## 0. Governance and delivery controls
+## 0. Nền móng quản trị & delivery
 
 - [x] 0.1 Establish the governance, UI/UX, security, incident, and release/rollback documentation baseline.
 - [x] 0.2 Remove repository-managed GitHub enforcement; retain documentation-led manual controls.
@@ -26,7 +28,7 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 - [x] 0.6 Add and validate the lean `itsunikki-coding` skill and proportional-evidence coding guidance.
 - [x] 0.7 Remove the redundant global `itsunikki-coding` skill after installing the Komorebi plugin; retain repository-specific rules in `AGENTS.md`.
 
-## 1. Discovery and product definition
+## 1. Khám phá & định nghĩa sản phẩm
 
 - [x] 1.1 Confirm the personal-tracker vision, personal-account user, primary problem, and release-one journeys in [PRD.md](PRD.md).
 - [x] 1.2 Define first-release scope, exclusions, functional requirements, and flow catalog in [FLOWS.md](FLOWS.md).
@@ -38,21 +40,21 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 - [ ] 1.4d Owner: TgTrh06 · Due before 6.1 — define dashboard/history performance budgets, SLOs, supported regions, and degradation behavior.
 - [ ] 1.4e Owner: TgTrh06 · Due before 6.4 — set the daily-tracking completion target and approve task recurrence, habit frequency, metric units, nutrition validation ranges, and dashboard indicators.
 
-## 2. Application foundation
+## 2. Nền móng ứng dụng
 
 - [x] 2.1 Scaffold the Node.js web application and its folder structure. React/Vite and clean boundaries are recorded in ADR-0003.
 - [x] 2.2 Configure TypeScript, formatting, linting, tests, and documented manual validation commands.
 - [x] 2.3 Establish accessible theme tokens, typography, layout primitives, and responsive breakpoints.
 - [ ] 2.4 Configure separate development, preview, staging, and production environments without exposing secrets.
 
-## 3. Security and platform
+## 3. Bảo mật & nền tảng
 
 - [x] 3.1 Select and document the identity provider, session model, and RBAC policy. See ADR-0001.
 - [-] 3.2 Select and document the managed database, migration tooling, tenancy model, and backup/recovery objectives. Supabase Postgres and migration/RLS boundaries are accepted in ADR-0005; backup/recovery objectives remain deferred.
 - [ ] 3.3 Implement server-side validation, authorization boundaries, safe errors, rate limits, and request correlation.
 - [ ] 3.4 Configure structured redacted logs, audit events, error tracking, metrics, and alerting.
 
-## 4. Release-one user capabilities
+## 4. Những khả năng dành cho người dùng ở bản đầu
 
 - [x] 4.1 Define the eight release-one journeys, ownership, protected data, exceptions, and acceptance links in [FLOWS.md](FLOWS.md).
 - [ ] 4.2 Implement account access, first-time profile/timezone setup, account isolation, and safe session failure states.
@@ -64,19 +66,19 @@ Use this file to plan and deliver the `itsunikki` application in small, reviewab
 - [ ] 4.8 Implement day/week review and personal-data profile, export-request, and deletion-request flows.
 - [ ] 4.9 Add unit, integration/API contract, and end-to-end tests for account isolation, timezone day boundaries, recurrence, corrections/deletions, aggregate recalculation, sensitive-data redaction, and WCAG 2.2 AA states.
 
-## 5. Deferred integrations
+## 5. Tích hợp để sau
 
 - [ ] 5.1 Keep food catalogs, barcode scanning, wearables, health platforms, external reminders, and social/sharing capabilities out of the first release.
 - [ ] 5.2 Before adding any provider, update the PRD and create an ADR covering consent, data minimization, provider failure, retries, idempotency, and redacted telemetry.
 - [ ] 5.3 Before receiving webhooks, define signature verification, duplicate-delivery handling, and safe failure behavior.
 
-## 6. Release readiness
+## 6. Sẵn sàng phát hành
 
 - [x] 6.1 Prepare the free cloud deployment, health checks, preview-data isolation, and production promotion workflow. Verified 2026-08-26 ICT: [Vercel web](https://project-itsunikki-web.vercel.app) deploys from `main`; [Render API health](https://itsunikki-api.onrender.com/v1/health) deploys from `main`; production CORS and Supabase Auth redirects use the fixed Vercel origin; Vercel Preview receives no API/database configuration.
 - [ ] 6.2 Define release dashboards, alert thresholds, support procedures, and an incident runbook.
 - [ ] 6.3 Verify rollback for application code and the migration/compensating-change plan for schema changes.
 - [ ] 6.4 Complete the first-release checklist in [PRD.md](PRD.md) and obtain required reviews.
 
-## 7. Deferred work
+## 7. Việc để sau
 
 - [ ] 7.1 **TBD:** Add validated follow-up work here after the first-release scope is approved.
