@@ -1,43 +1,45 @@
-# Architecture Decision Records
+# ADR — những quyết định để lại dấu ✦
+
+> Có những điều không nên chỉ nằm trong trí nhớ. ADR ghi lại lý do ta đã chọn con đường này, để sau này vẫn hiểu và tôn trọng quyết định khi ấy.
 
 Use this directory for approved decisions that materially affect architecture, data, security, deployment, integrations, or API compatibility.
 
-## Naming and lifecycle
+## Đặt tên & vòng đời
 
 - Name files `NNNN-short-title.md`, starting with `0001` and incrementing sequentially.
 - Use statuses `Proposed`, `Accepted`, `Superseded`, or `Rejected`.
 - Link a superseded ADR to its replacement; do not rewrite historical decisions.
 
-## Template
+## Khuôn mẫu
 
 ```md
-# NNNN: Short decision title
+# NNNN: Tên quyết định ngắn gọn
 
 **Status:** Proposed
 **Date:** YYYY-MM-DD
 **Owners:** TBD
 
-## Context
+## Bối cảnh
 
 What problem, constraints, and facts require a decision?
 
-## Decision
+## Quyết định
 
 What will be done, and where does the decision apply?
 
-## Alternatives considered
+## Các lựa chọn đã cân nhắc
 
 What viable options were considered and why were they not selected?
 
-## Consequences
+## Hệ quả
 
 List benefits, costs, operational effects, and follow-up work.
 
-## Security and privacy impact
+## Tác động đến bảo mật & riêng tư
 
 Describe data classification, access controls, secrets, auditability, compliance, and threat-model impact.
 
-## Rollout and rollback
+## Triển khai & quay lui
 
 Describe implementation sequencing, migration/compatibility plan, verification, monitoring, and reversal or compensating action.
 ```
